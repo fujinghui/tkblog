@@ -3,7 +3,8 @@ body{
 	padding:0px;
 }
 html{
-	overflow: hidden;
+	/*overflow: hidden;*/
+	overflow-x:hidden;
 }
 .page{
 	position:absolute;
