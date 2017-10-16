@@ -1,0 +1,93 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>blog</title>
+        <link rel="stylesheet" href="css/fstyle.css">
+		<!-- <script type="text/javascript" src="vue/vue.js"></script> -->
+        <!--<script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
+        -->
+        <script type="text/javascript" src="femy/femy.min.js"></script>
+        <script>
+            var page_address = "http://192.168.232.128/views/";
+            var data_server_address = "http://192.168.232.128/public/index.php";
+
+            // $.fn.LoadPage = function(url){
+            //     var $page = this[0];
+            //     $.ajax({
+            //         url:server_address+url,
+            //         success:function(data){
+            //             $page.innerHTML = data;
+            //             var p = "<script>.*<\/script>";
+            //             console.log(p);
+            //             var position = data.search(p);
+            //             console.log(position);
+            //         }
+            //     });
+            // }
+            // $(document).ready(function(){
+            //     //$("#page").LoadPage("test.html");
+            // });
+
+        </script>
+    </head>
+	<body>
+        <div class="nav">
+            <span class="title">
+                Blog
+            </span>
+            <div class="menu">
+                <ul>
+                    <li><a href="http://www.baidu.com/">MyBlog</a></li>
+                    <li><a href="test.html">Other</a></li>
+                    <li><a href="error.html">Help</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="page" style="width:100%;background:#e0e0e0;">
+            <div style="width:1000px;">
+                <div class="content left-list" style="border:1px solid #000;height:100%;overflow-y:auto;overflow-y:visible;overflow-x: hidden;">
+                    <div style="width:80%;margin:0px auto;">
+                        <ul class="list">
+                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content" style="width:790px;">
+                    <span style="font-size:50px;color:#8099f0;margin-left:100px;margin-top:100px;">Welcome!</span>
+                </div>
+            </div>
+        </div>
+
+	    <div id="page">
+            page load error!
+            <a href="http://www.baidu.com/">baidu</a>
+            <a href="test.html">get title</a>
+        </div>
+
+        <script>
+            femy.init({
+                view_server:"http://192.168.232.128/views/",
+                data_server:"http://192.168.232.128/public/index.php/"
+            });
+
+            var a = "name:{{name}}fs{{adfj}}aslkdfj%fujinghui.age%";
+            var data = {
+                "name":"fu",
+                "age":"20"
+            };
+            var html = a.FTemplate(data);
+            console.log(html);
+
+
+        </script>
+	</body>
+</html>
