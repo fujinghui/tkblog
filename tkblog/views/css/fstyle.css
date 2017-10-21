@@ -25,6 +25,7 @@ html{
 	height:100px;
 	min-width: 1000px;
 	z-index:1000;
+	box-shadow: 2px 2px 10px 2px #56ee78;
 }
 .nav>.title{
 	font-size:40px;

@@ -5,8 +5,8 @@
 		<title>blog</title>
         <link rel="stylesheet" href="css/fstyle.css">
 		<!-- <script type="text/javascript" src="vue/vue.js"></script> -->
-        <!--<script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script>
-        -->
+       <!--  <script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script> -->
+        <script type="text/javascript" src="jquery/jquery.min.js"></script>
         <script type="text/javascript" src="femy/femy.min.js"></script>
         <script>
             var page_address = "http://192.168.232.128/views/";
@@ -48,16 +48,31 @@
             <div style="width:1000px;">
                 <div class="content left-list" style="border:1px solid #000;height:100%;overflow-y:auto;overflow-y:visible;overflow-x: hidden;">
                     <div style="width:80%;margin:0px auto;">
-                            <xmp id="fengine">
+                            <xmp id="fengine" >
                                 <ul class="list">
-                                {{ for(var i = 0; i < menu.length; i ++) {}}
-                                <li><a>{{menu[i]}}<br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                                {{ if(typeof(menu)!='undefined'){ }}
+
+                                    {{ for(var i = 0; i < menu.length; i ++) {}}
+                                        <li><a>{{menu[i][0]}}<br /><span style="font-size:10px;color:#ff8990">date:{{menu[i][1]}}</span></a></li>
+                                    {{ } }}
+
                                 {{ } }}
                                 </ul>
                             </xmp>
                             <script>
-                                femy.use({
-                                    menu:["menu1", "menu2", "hello"]
+                                $.ajax({
+                                    url:"http://192.168.232.128/public/index.php/blog/menu/getMenuList",
+                                    type:"get",
+                                    dataType:"json",
+                                    data:{},
+                                    error:function(){
+                                        console.log("error!")
+                                    },
+                                    success:function(data){
+                                        console.log(data);
+                                        femy.use(data);
+                                        femy.render();
+                                    }
                                 });
                             </script>
                     </div>
@@ -70,14 +85,14 @@
                     </script>
                     <xmp id="fengine">
     
-                            {{ for(var i = 0; i < 100; i ++){ }}
+                            {{ for(var i = 0; i < 1; i ++){ }}
                                 hello!<br />
                             {{ } }}
                     </xmp>
                     <xmp id="fengine">
                         fajlkdsfjalfdjalkd
                         {{ var flag = 0;}}
-                        {{ for(var i = 0; i < 10000; i ++){}}
+                        {{ for(var i = 0; i < 10; i ++){}}
                         {{  if(flag % 10 == 0) }}
                             hello<br />
                         {{  else }}
