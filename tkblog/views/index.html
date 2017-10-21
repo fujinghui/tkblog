@@ -44,25 +44,55 @@
                 </ul>
             </div>
         </div>
-
         <div class="page" style="width:100%;background:#e0e0e0;">
             <div style="width:1000px;">
                 <div class="content left-list" style="border:1px solid #000;height:100%;overflow-y:auto;overflow-y:visible;overflow-x: hidden;">
                     <div style="width:80%;margin:0px auto;">
-                        <ul class="list">
-                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
-                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
-                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
-                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
-                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
-                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
-                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
-                            <li><a>first blog <br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
-                        </ul>
+                            <xmp id="fengine">
+                                <ul class="list">
+                                {{ for(var i = 0; i < menu.length; i ++) {}}
+                                <li><a>{{menu[i]}}<br /><span style="font-size:10px;color:#ff8990">date:2017-10-17</span></a></li>
+                                {{ } }}
+                                </ul>
+                            </xmp>
+                            <script>
+                                femy.use({
+                                    menu:["menu1", "menu2", "hello"]
+                                });
+                            </script>
                     </div>
                 </div>
                 <div id="show_message" class="content" style="width:790px;">
                     <span style="font-size:50px;color:#8099f0;margin-left:100px;margin-top:100px;">Welcome!</span>
+                    <script type="text/html" style="display:block">
+                        <h2>hello</h2>
+                        <input type="text">
+                    </script>
+                    <xmp id="fengine">
+    
+                            {{ for(var i = 0; i < 100; i ++){ }}
+                                hello!<br />
+                            {{ } }}
+                    </xmp>
+                    <xmp id="fengine">
+                        fajlkdsfjalfdjalkd
+                        {{ var flag = 0;}}
+                        {{ for(var i = 0; i < 10000; i ++){}}
+                        {{  if(flag % 10 == 0) }}
+                            hello<br />
+                        {{  else }}
+                            sb?
+                        {{  flag ++; }}
+                        {{ } }}
+
+                    </xmp>
+                    <xmp>
+                        fjlksajdfklsadfsadlkfajsdlkafdjalksd
+                        fajlksdfjaksdfjaslkdfad
+                        fasdflkajfd<h2>
+                    </xmp>
+                    <pre>
+                    </pre>
                 </div>
             </div>
         </div>
@@ -78,29 +108,17 @@
                 view_server:"http://192.168.232.128/views/",
                 data_server:"http://192.168.232.128/public/index.php/"
             });
-
-            var a = "name:{{name}}fs{{adfj}}aslkdfj%fujinghui.age%";
-            var data = {
-                "name":"fu",
-                "age":"20"
-            };
-            //var html = a.FTemplate(data);
-            //console.log(html);
-
-            var tpl = "{{aaa}}fasdlfasld{{a.info}}{{ for(var i = 0; i < 90000; i ++){ }}"+
-                      "{{a.info}}"+
-                      "{{ } }}";
-
-            var data = {
-                aaa:"fujinghui",
+            femy.use({
                 a:{
-                    "info":"a<br />",
-                    "c":"d"
+                    b:{
+                        c:"f"
+                    },
+                    d:"u"
                 }
-            };
-            var rdata = FEngine(tpl, data);
-            console.log("end");
-            document.getElementById("show_message").innerHTML = rdata;
+            });
+            femy.render();
+
+            //initEngine("xmp", "fengine");
 
         </script>
 	</body>
