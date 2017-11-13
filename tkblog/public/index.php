@@ -14,5 +14,9 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+header('Access-Control-Allow-Origin:*');
+header('Access-COntrol-Allow-Methods:*');
+header('Access-Control-Allow-Headers:x-requested-with,content-type');
+
 // 加载框架引导文件
 require __DIR__ . '/../thinkphp/start.php';

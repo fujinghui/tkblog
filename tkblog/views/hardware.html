@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>Fujinghui work</title>
+		<script src="jquery/jquery.min.js"></script>
+
+		<style>
+			div{
+				display:inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="myform">
+			<div style="width:100%">
+				<div style="width:20%">angle value:</div>
+				<div style="width:50%"><input type="text" name="angle" value="100" placeholder="angle value"></div>
+			</div>
+			<div style="width:100%">
+				<div style="width:20%">direction:</div>
+				<div style="width:50%">
+					<select name="direction">
+						<option value="1">forward</option>
+						<option value="2">backward</option>
+					</select>
+				</div>
+			</div>
+			<div style="width:100%">
+				<div style="width:20%">delay time:</div>
+				<div style="width:50%"><input type="range" name="range" min="10" max="100" value="10"></div>
+			</div>
+			<input type="button" onclick="SetHardware()" value="change">
+		</form>
+
+	</body>
+	<script>
+		function SetHardware(){
+			var data = $("#myform").serialize();
+			console.log(data);
+			$.ajax({
+				url:"sethardware.cgi",
+				data:data,
+				success:function(data){
+					console.log(data);
+				}
+			});
+		}
+	</script>
+</html>
