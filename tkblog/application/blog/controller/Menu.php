@@ -1,7 +1,7 @@
 <?php
 	namespace app\blog\controller;
 	use think\Controller;
-	use app\blog\model\Categories;
+	use app\blog\model\CategoriesModel;
 
 	use think\Db;
 	class Menu extends Controller{
@@ -12,7 +12,7 @@
 		}
         public function getMenuList(){
             //header("Access-Control-Allow-Origin:*");
-			$menus = Categories::getMenuList();
+			$menus = CategoriesModel::getMenuList();
 			$result = array();
 			$result["menu"] = array();
 

@@ -11,24 +11,6 @@
         <script>
             var page_address = "http://192.168.232.128/views/";
             var data_server_address = "http://192.168.232.128/public/index.php";
-
-            // $.fn.LoadPage = function(url){
-            //     var $page = this[0];
-            //     $.ajax({
-            //         url:server_address+url,
-            //         success:function(data){
-            //             $page.innerHTML = data;
-            //             var p = "<script>.*<\/script>";
-            //             console.log(p);
-            //             var position = data.search(p);
-            //             console.log(position);
-            //         }
-            //     });
-            // }
-            // $(document).ready(function(){
-            //     //$("#page").LoadPage("test.html");
-            // });
-
         </script>
     </head>
 	<body>
@@ -44,22 +26,25 @@
                 </ul>
             </div>
         </div>
-        <div class="page" style="width:100%;background:#e0e0e0;">
+        <div class="page" style="width:100%;">
             <div style="width:1000px;">
-                <div class="content left-list" style="border:1px solid #000;height:100%;overflow-y:auto;overflow-y:visible;overflow-x: hidden;">
-                    <div style="width:80%;margin:0px auto;">
+                <div class="" style="overflow-y:auto;overflow-y:visible;overflow-x: hidden;width:100px;display: inline-block;">
+                    
                             <xmp id="fengine" >
-                                <ul class="list">
-                                {{ if(typeof(menu)!='undefined'){ }}
+                                <div class="block">
+                                    <ul class="list">
+                                    {{ if(typeof(menu)!='undefined'){ }}
 
-                                    {{ for(var i = 0; i < menu.length; i ++) {}}
-                                        <li><a>{{menu[i][0]}}<br /><span style="font-size:10px;color:#ff8990">date:{{menu[i][1]}}</span></a></li>
+                                        {{ for(var i = 0; i < menu.length; i ++) {}}
+                                            <li><a>{{menu[i][0]}}<br /><span style="font-size:10px;color:#ff8990">date:{{menu[i][1]}}</span></a></li>
+                                        {{ } }}
+
                                     {{ } }}
-
-                                {{ } }}
-                                </ul>
+                                    </ul>
+                                </div>
                             </xmp>
                             <script>
+                                //query category data
                                 $.ajax({
                                     url:"http://192.168.232.128/public/index.php/blog/menu/getMenuList",
                                     type:"get",
@@ -75,37 +60,51 @@
                                     }
                                 });
                             </script>
-                    </div>
                 </div>
-                <div id="show_message" class="content" style="width:790px;">
+                <div id="show_message" style="width:500px;display:inline-block;;">
                     <span style="font-size:50px;color:#8099f0;margin-left:100px;margin-top:100px;">Welcome!</span>
-                    <script type="text/html" style="display:block">
+                   <!--  <script type="text/html" style="display:block">
                         <h2>hello</h2>
                         <input type="text">
-                    </script>
+                    </script> -->
                     <xmp id="fengine">
-    
-                            {{ for(var i = 0; i < 1; i ++){ }}
-                                hello!<br />
+                            {{ if(typeof(articles)!="undefined"){ }}
+                            {{ for(var i = 0; i < articles.length; i ++){ }}
+                                <div class="block">
+                                    <div>
+                                        <span class="category">auth:{{articles[i].user_id}}</span>
+                                    </div>
+                                    <p>{{ articles[i].articleceContent }}</p>
+                                </div>
+                            {{ } }}
                             {{ } }}
                     </xmp>
                     <xmp id="fengine">
-                        fajlkdsfjalfdjalkd
-                        {{ var flag = 0;}}
-                        {{ for(var i = 0; i < 10; i ++){}}
-                        {{  if(flag % 10 == 0) }}
-                            hello<br />
-                        {{  else }}
-                            sb?
-                        {{  flag ++; }}
-                        {{ } }}
 
                     </xmp>
-                    <xmp>
-                        fjlksajdfklsadfsadlkfajsdlkafdjalksd
-                        fajlksdfjaksdfjaslkdfad
-                        fasdflkajfd<h2>
-                    </xmp>
+                    <script>
+
+                                //query article data
+                                $.ajax({
+                                    url:"../public/index.php/blog/article/getArticles",
+                                    type:"get",
+                                    dataType:"json",
+                                    data:{},
+                                    error:function(){
+
+                                    },
+                                    success:function(data){
+                                        if(data.status == 1)
+                                        {
+                                            var sd = {articles:data.data};
+                                            femy.use(sd);
+                                            femy.render();
+                                            console.log("success");
+                                            console.log(sd);
+                                        }
+                                    }
+                                });
+                    </script>
                     <pre>
                     </pre>
                 </div>
