@@ -16,9 +16,18 @@ html{
 	box-shadow:0 1px 3px rgba(0, 0, 0, .1);
 	background:#fff;
 	padding:10px;
+	margin-top:10px;
 }
+
 .block .category{
 	color:#aaa;
+}
+.block .title{
+	color:#aa00aa;
+	font-size:25px;
+}
+.block .context{
+	color:#bbb;
 }
 .content{
 	display:inline-block;

@@ -27,8 +27,11 @@
             </div>
         </div>
         <div class="page" style="width:100%;">
-            <div style="width:1000px;">
-                <div class="" style="overflow-y:auto;overflow-y:visible;overflow-x: hidden;width:100px;display: inline-block;">
+
+
+            <div style="width:1000px;display:flex;margin:0 auto;">
+            <!-- blog menu -->
+            <div style="overflow-y:auto;overflow-y:visible;overflow-x: hidden;width:100px;position:fixed;top:100px;">
                     
                             <xmp id="fengine" >
                                 <div class="block">
@@ -60,8 +63,10 @@
                                     }
                                 });
                             </script>
-                </div>
-                <div id="show_message" style="width:500px;display:inline-block;;">
+            </div>
+
+                <!-- blog context -->
+                <div id="show_message" style="width:700px;margin:0 auto;">
                     <span style="font-size:50px;color:#8099f0;margin-left:100px;margin-top:100px;">Welcome!</span>
                    <!--  <script type="text/html" style="display:block">
                         <h2>hello</h2>
@@ -71,10 +76,15 @@
                             {{ if(typeof(articles)!="undefined"){ }}
                             {{ for(var i = 0; i < articles.length; i ++){ }}
                                 <div class="block">
-                                    <div>
-                                        <span class="category">auth:{{articles[i].user_id}}</span>
+                                    <div class="category">
+                                        <span>auth:{{articles[i].user_id}}</span>
                                     </div>
-                                    <p>{{ articles[i].articleceContent }}</p>
+                                    <div class="title">
+                                        <span>title:{{articles[i].articleTitle}}</span>
+                                    </div>
+                                    <div class="context">
+                                        <p>{{ articles[i].articleceContent }}</p>
+                                    </div>
                                 </div>
                             {{ } }}
                             {{ } }}

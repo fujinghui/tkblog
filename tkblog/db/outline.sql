@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`user` (
-  `user_id` INT NOT NULL,
+  `user_id` INT NOT NULL AUTO_INCREMENT,
   `type` TINYINT NULL,
   `uname` VARCHAR(45) NULL,
   PRIMARY KEY (`user_id`))
