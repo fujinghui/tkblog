@@ -18,6 +18,17 @@ html{
 	padding:10px;
 	margin-top:10px;
 }
+.block_no{
+	-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, .1);
+	box-shadow:0 1px 3px rgba(0, 0, 0, .1);
+	background:#fff;
+}
+.block a{
+	text-decoration: none;
+}
+.block_no a{
+	text-decoration: none;
+}
 
 .block .category{
 	color:#aaa;
@@ -78,16 +89,22 @@ ul.list{
 	padding:0px;
 }
 ul.list>li{
+	display:list-item;
 	list-style-type: none;
 }
 ul.list>li>a{
 	display:block;
-	padding:10px;
+	padding-top:5px;
+	padding-bottom: 5px;
 	text-align: center;
+	padding-left:10px;
+	padding-right:10px;
+	overflow: hidden;
+	/*
 	border-top:1px solid #666;
-	border-bottom: 1px solid #666;
+	border-bottom: 1px solid #666;*/
 }
 ul.list>li>a:hover{
 	cursor: pointer;
-	background: #909090;
+	background: rgba(250, 200, 200, 0.5);
 }

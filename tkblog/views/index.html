@@ -29,21 +29,21 @@
         <div class="page" style="width:100%;">
 
 
-            <div style="width:1000px;display:flex;margin:0 auto;">
+            <div style="width:1200px;display:flex;margin:0 auto;">
             <!-- blog menu -->
-            <div style="overflow-y:auto;overflow-y:visible;overflow-x: hidden;width:100px;position:fixed;top:100px;">
+            <div style="overflow-y:auto;overflow-y:visible;overflow-x: hidden;width:200px;position:fixed;top:100px;padding-top:10px;padding-bottom: 10px;left:20px;">
                     
                             <xmp id="fengine" >
-                                <div class="block">
+                                <div class="block_no">
                                     <ul class="list">
-                                    {{ if(typeof(menu)!='undefined'){ }}
+                                        {{ if(typeof(menu)!='undefined'){ }}
 
-                                        {{ for(var i = 0; i < menu.length; i ++) {}}
-                                            <li><a>{{menu[i][0]}}<br /><span style="font-size:10px;color:#ff8990">date:{{menu[i][1]}}</span></a></li>
+                                            {{ for(var i = 0; i < menu.length; i ++) {}}
+                                                <li><a>{{menu[i][0]}}<br /><!-- <span style="font-size:10px;color:#ff8990">date:{{menu[i][1]}}</span> --></a></li>
+                                            {{ } }}
+
                                         {{ } }}
-
-                                    {{ } }}
-                                    </ul>
+                                     </ul>
                                 </div>
                             </xmp>
 
@@ -78,10 +78,10 @@
                             {{ for(var i = 0; i < articles.length; i ++){ }}
                                 <div class="block">
                                     <div class="category">
-                                        <span>auth:{{articles[i].user_id}}</span>
+                                        <span>分类:{{articles[i].categories_info.categories_name}}</span>
                                     </div>
                                     <div class="title">
-                                        <span>title:{{articles[i].articleTitle}}</span>
+                                        <a href="#"><span>title:{{articles[i].articleTitle}}</span></a>
                                     </div>
                                     <div class="context">
                                         <p>{{ articles[i].articleceContent }}</p>
@@ -132,14 +132,6 @@
             femy.init({
                 view_server:"http://192.168.232.128/views/",
                 data_server:"http://192.168.232.128/public/index.php/"
-            });
-            femy.use({
-                a:{
-                    b:{
-                        c:"f"
-                    },
-                    d:"u"
-                }
             });
             femy.render();
 
