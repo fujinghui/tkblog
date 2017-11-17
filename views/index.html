@@ -1,0 +1,151 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>blog</title>
+        <link rel="stylesheet" href="css/fstyle.css">
+		<!-- <script type="text/javascript" src="vue/vue.js"></script> -->
+       <!--  <script type="text/javascript" src="jquery/jquery-3.2.1.min.js"></script> -->
+        <script type="text/javascript" src="jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="femy/femy.min.js"></script>
+        <script>
+			//edit
+            var page_address = "http://127.0.0.1/views/";
+            var data_server_address = "http://127.0.0.1/public/index.php";
+        </script>
+    </head>
+	<body>
+        <div class="nav">
+            <span class="title">
+                Blog
+            </span>
+            <div class="menu">
+                <ul>
+                    <li><a href="http://www.baidu.com/">MyBlog</a></li>
+                    <li><a href="test.html">Other</a></li>
+                    <li><a href="error.html">Help</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page" style="width:100%;">
+
+
+            <div style="width:1000px;display:flex;margin:0 auto;">
+            <!-- blog menu -->
+            <div style="overflow-y:auto;overflow-y:visible;overflow-x: hidden;width:100px;position:fixed;top:100px;">
+                    
+                            <xmp id="fengine" >
+                                <div class="block">
+                                    <ul class="list">
+                                    {{ if(typeof(menu)!='undefined'){ }}
+
+                                        {{ for(var i = 0; i < menu.length; i ++) {}}
+                                            <li><a>{{menu[i][0]}}<br /><span style="font-size:10px;color:#ff8990">date:{{menu[i][1]}}</span></a></li>
+                                        {{ } }}
+
+                                    {{ } }}
+                                    </ul>
+                                </div>
+                            </xmp>
+
+                            <script>
+                                //query category data
+                                $.ajax({
+                                    url:"http://127.0.0.1/public/index.php/blog/menu/getMenuList",
+                                    type:"get",
+                                    dataType:"json",
+                                    data:{},
+                                    error:function(){
+                                        console.log("error!")
+                                    },
+                                    success:function(data){
+                                        console.log(data);
+                                        femy.use(data);
+                                        femy.render();
+                                    }
+                                });
+                            </script>
+            </div>
+
+                <!-- blog context -->
+                <div id="show_message" style="width:700px;margin:0 auto;">
+                    <span style="font-size:50px;color:#8099f0;margin-left:100px;margin-top:100px;">Welcome!</span>
+                   <!--  <script type="text/html" style="display:block">
+                        <h2>hello</h2>
+                        <input type="text">
+                    </script> -->
+                    <xmp id="fengine">
+                            {{ if(typeof(articles)!="undefined"){ }}
+                            {{ for(var i = 0; i < articles.length; i ++){ }}
+                                <div class="block">
+                                    <div class="category">
+                                        <span>auth:{{articles[i].user_id}}</span>
+                                    </div>
+                                    <div class="title">
+                                        <span>title:{{articles[i].articleTitle}}</span>
+                                    </div>
+                                    <div class="context">
+                                        <p>{{ articles[i].articleceContent }}</p>
+                                    </div>
+                                </div>
+                            {{ } }}
+                            {{ } }}
+                    </xmp>
+                    <xmp id="fengine">
+
+                    </xmp>
+                    <script>
+
+                                //query article data
+                                $.ajax({
+                                    url:"../public/index.php/blog/article/getArticles",
+                                    type:"get",
+                                    dataType:"json",
+                                    data:{},
+                                    error:function(){
+
+                                    },
+                                    success:function(data){
+                                        if(data.status == 1)
+                                        {
+                                            var sd = {articles:data.data};
+                                            femy.use(sd);
+                                            femy.render();
+                                            console.log("success");
+                                            console.log(sd);
+                                        }
+                                    }
+                                });
+                    </script>
+                    <pre>
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+	    <div id="page">
+            page load error!
+            <a href="http://www.baidu.com/">baidu</a>
+            <a href="test.html">get title</a>
+        </div>
+
+        <script>
+            femy.init({
+                view_server:"http://127.0.0.1/views/",
+                data_server:"http://127.0.0.1/public/index.php/"
+            });
+            femy.use({
+                a:{
+                    b:{
+                        c:"f"
+                    },
+                    d:"u"
+                }
+            });
+            femy.render();
+
+            //initEngine("xmp", "fengine");
+
+        </script>
+	</body>
+</html>
