@@ -29,18 +29,18 @@
 			}catch(e){
 				throw new Error("the brower not support!");
 			}
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "mp3/test.mp3", true);
-			xhr.responseType = 'arraybuffer';
-			xhr.onload = function(){
-				sound = context.createBufferSource();
-				context.decodeAudioData(xhr.response, function(buffer){
-						sound.buffer = buffer;
-						sound.connect(context.destination);
-						console.log("load success");
-				});
-			}
-			xhr.send();
+			// var xhr = new XMLHttpRequest();
+			// xhr.open("GET", "mp3/qhy.mp3", true);
+			// xhr.responseType = 'arraybuffer';
+			// xhr.onload = function(){
+			// 	sound = context.createBufferSource();
+			// 	context.decodeAudioData(xhr.response, function(buffer){
+			// 			sound.buffer = buffer;
+			// 			sound.connect(context.destination);
+			// 			console.log("load success");
+			// 	});
+			// }
+			// xhr.send();
 
 
 			function loadAudioElement(url){
@@ -55,9 +55,11 @@
 					audio.src = url;
 				});
 			}
-			loadAudioElement('mp3/bzyy.mp3').then(function(elem){
+			loadAudioElement('mp3/zhdmx.mp3').then(function(elem){
 				//elem.play();
 				Sound.element = elem;
+				Sound.canvas = document.getElementById("mycanvas");
+				Sound.context = Sound.canvas.getContext("2d");
 				Sound.play();
 			},						//success
 			function(ele){
@@ -83,6 +85,11 @@
 					rr %= 256; gg %= 256; bb %= 256;
 					return "rgb("+rr+","+gg+","+bb+")";
 				},
+				canvas : undefined,
+				context : undefined,
+				center_x : 256,
+				center_y : 256,
+
 				element : undefined,
 				play : function(){
 					var sound = context.createMediaElementSource(this.element);
@@ -103,6 +110,17 @@
 							if(typeof(divs) != "undefined")
 							{
 								var count = Math.floor(data.length / divs.length);
+								var preHeight = 128;					//pre height
+								var show_points = divs.length;			//show point count
+								var angle = 0 * 2 * Math.PI /show_points;
+								var start_point = {};
+								Sound.context.clearRect(0, 0, Sound.canvas.width, Sound.canvas.height);
+
+								Sound.context.fillStyle = "rgb(255, 255, 255)";
+								Sound.context.fillRect(0, 0, Sound.canvas.width, Sound.canvas.height);
+								Sound.context.strokeStyle = Sound.getColor();//"rgb(155, 200, 155)";
+								Sound.context.beginPath();
+								Sound.context.lineWidth = 5;
 								for(var i = 0; i < divs.length; i ++)
 								{
 									var frequency = 0;
@@ -119,7 +137,31 @@
 										100-i*10+frequency, 
 										i*frequency
 									);
+									//cavnas draw frequency
+									angle = i * 2 * Math.PI / show_points;
+									//console.log(angle);
+									if(i == 0)
+									{
+										Sound.context.moveTo(
+											Sound.center_x + frequency * Math.cos(angle),
+											Sound.center_y + frequency * Math.sin(angle));
+										start_point.x = Sound.center_x + frequency * Math.cos(angle);
+										start_point.y = Sound.center_y + frequency * Math.sin(angle);
+									}
+									else
+										Sound.context.lineTo(
+											Sound.center_x + frequency * Math.cos(angle),
+											Sound.center_y + frequency * Math.sin(angle),
+											);
+									if(i == show_points - 1)
+									{
+										Sound.context.lineTo(
+											start_point.x, start_point.y
+											);
+									}
 								}
+								//Sound.context.closePath();
+								Sound.context.stroke();
 							}
 						}
 
@@ -137,7 +179,128 @@
 		</script>
 	</head>
 	<body>
+		<canvas id="mycanvas" width="512" height="512">
+
+		</canvas>
+
+
 		<div class="main" id="graph" style="">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
